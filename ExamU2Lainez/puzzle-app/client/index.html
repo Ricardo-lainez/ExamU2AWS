@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle Manager</title>
+</head>
+<body>
+    <h1>Puzzle Manager</h1>
+    
+    <div>
+        <h2>Compute and Save</h2>
+        <input type="text" id="serialNumber" placeholder="Serial Number">
+        <input type="text" id="brand" placeholder="Brand">
+        <input type="text" id="model" placeholder="Model">
+        <label><input type="checkbox" id="warranty"> Two Years Warranty</label>
+        <input type="number" id="price" placeholder="Price">
+        <button onclick="computeAndSave()">Compute and Save</button>
+    </div>
+
+    <div>
+        <h2>Saved Puzzles</h2>
+        <button onclick="loadPuzzles()">Refresh List</button>
+        <div id="puzzlesList"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
