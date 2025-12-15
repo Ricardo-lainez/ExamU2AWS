@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:3000/api';
+// Use relative URL to work in both local and production environments
+const API_URL = '/api';
 
 async function computeAndSave() {
     const data = {
