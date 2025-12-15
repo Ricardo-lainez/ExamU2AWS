@@ -2,6 +2,7 @@ services:
   - type: web
     name: puzzle-app
     env: node
+    rootDirectory: puzzle-app
     buildCommand: npm install
     startCommand: npm start
     envVars:
