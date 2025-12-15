@@ -5,21 +5,19 @@ const Puzzle = require('../models/Puzzle');
 // Compute and save
 router.post('/puzzles/compute', async (req, res) => {
     try {
-        const { serialNumber, brand, model, twoYearsWarranty, price } = req.body;
+        const { serialNumber, brand, model, description, price } = req.body;
         
-        // Business rule: Apply 10% discount if warranty and price > 100
-        let result = price;
-        if (twoYearsWarranty && price > 100) {
-            result = price * 0.9;
-        }
+        // Business rule: Calculate total price with IVA (15%)
+        const IVA = 0.15;
+        const totalPrice = price + (price * IVA);
         
         const puzzle = new Puzzle({
             serialNumber,
             brand,
             model,
-            twoYearsWarranty,
+            description,
             price,
-            result
+            totalPrice
         });
         
         await puzzle.save();

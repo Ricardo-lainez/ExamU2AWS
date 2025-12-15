@@ -5,7 +5,7 @@ async function computeAndSave() {
         serialNumber: document.getElementById('serialNumber').value,
         brand: document.getElementById('brand').value,
         model: document.getElementById('model').value,
-        twoYearsWarranty: document.getElementById('warranty').checked,
+        description: document.getElementById('description').value,
         price: parseFloat(document.getElementById('price').value)
     };
 
@@ -19,7 +19,7 @@ async function computeAndSave() {
         const result = await response.json();
         
         if (response.ok) {
-            alert(`Saved successfully! Final price: $${result.result}`);
+            alert(`Saved successfully! Price: $${result.price.toFixed(2)}, Total with IVA: $${result.totalPrice.toFixed(2)}`);
             clearForm();
             loadPuzzles();
         } else {
@@ -40,9 +40,9 @@ async function loadPuzzles() {
             <div>
                 <strong>${p.brand} ${p.model}</strong> - 
                 Serial: ${p.serialNumber} - 
-                Warranty: ${p.twoYearsWarranty ? 'Yes' : 'No'} - 
-                Price: $${p.price} - 
-                Final Price: $${p.result || p.price}
+                Description: ${p.description || 'N/A'} - 
+                Price: $${p.price ? p.price.toFixed(2) : '0.00'} - 
+                Total Price (with IVA): $${p.totalPrice ? p.totalPrice.toFixed(2) : '0.00'}
             </div>
         `).join('');
     } catch (error) {
@@ -54,6 +54,6 @@ function clearForm() {
     document.getElementById('serialNumber').value = '';
     document.getElementById('brand').value = '';
     document.getElementById('model').value = '';
-    document.getElementById('warranty').checked = false;
+    document.getElementById('description').value = '';
     document.getElementById('price').value = '';
 }

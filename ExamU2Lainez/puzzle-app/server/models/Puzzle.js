@@ -13,16 +13,17 @@ const puzzleSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    twoYearsWarranty: {
-        type: Boolean,
+    description: {
+        type: String,
         required: true
     },
     price: {
         type: Number,
         required: true
     },
-    result: {
-        type: Number
+    totalPrice: {
+        type: Number,
+        required: true
     },
     createdAt: {
         type: Date,
